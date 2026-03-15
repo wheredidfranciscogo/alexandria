@@ -223,7 +223,7 @@ export default function App() {
                 <img
                   src="/logo-alexandria.svg"
                   alt="Alexandria"
-                  style={{ width: "65%", height: "65%", objectFit: "contain" }}
+                  style={{ width: "85%", height: "85%", objectFit: "contain" }}
                 />
               </div>
             </div>
@@ -531,7 +531,7 @@ export default function App() {
             </span>
           </div>
           <p className="text-xs" style={{ color: "#5A5040" }}>
-            Made with love in Melbourne by{" "}
+            Made by{" "}
             <a
               href="https://wheredidfranciscogo.com"
               target="_blank"
