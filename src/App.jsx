@@ -183,12 +183,50 @@ export default function App() {
             style={{ opacity: 0 }}
           >
             <BookStack />
-            <p
-              className="text-xs text-center tracking-widest uppercase"
-              style={{ color: "#7A6E5F" }}
-            >
-              Your neighbourhood's next library
-            </p>
+            {/* Spinning circle badge */}
+            <div className="relative" style={{ width: 140, height: 140 }}>
+              <div className="absolute inset-0 animate-spin-slow">
+                <svg viewBox="0 0 140 140" className="w-full h-full">
+                  <path
+                    id="spin-circle"
+                    fill="none"
+                    d="M 70,70 m -52,0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0"
+                  />
+                  <text
+                    style={{
+                      fill: "#2D5016",
+                      fontSize: 11,
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: 4,
+                    }}
+                  >
+                    <textPath href="#spin-circle">
+                      YOUR NEIGHBOURHOOD'S BOOKSHELF · · ·
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              {/* Pulse ring */}
+              <div
+                className="absolute animate-pulse-ring"
+                style={{
+                  inset: "22%",
+                  borderRadius: "50%",
+                  border: "1.5px solid #2D5016",
+                }}
+              />
+              {/* Centre logo mark */}
+              <div
+                className="absolute flex items-center justify-center rounded-full"
+                style={{ inset: "24%", background: "#2D5016" }}
+              >
+                <img
+                  src="/logo-alexandra.svg"
+                  alt="Alexandria"
+                  style={{ width: "65%", height: "65%", objectFit: "contain" }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -260,7 +298,8 @@ export default function App() {
                 style={{ color: "#7A6E5F" }}
               >
                 There are hundreds of books sitting idle in houses just like
-                yours. Read once, shelved, forgotten.
+                yours. Read once, shelved, forgotten. No one else has access to
+                them — maybe a close friend you talk books with, but that's it.
               </p>
               <p
                 className="text-base leading-loose mb-5"
@@ -492,9 +531,9 @@ export default function App() {
             </span>
           </div>
           <p className="text-xs" style={{ color: "#5A5040" }}>
-            Made by{" "}
+            Made with love in Melbourne by{" "}
             <a
-              href="https://wheredidfranciscogo.netlify.app/"
+              href="https://wheredidfranciscogo.com"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#6B8F71", textDecoration: "none" }}
