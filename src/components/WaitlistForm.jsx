@@ -62,7 +62,7 @@ export default function WaitlistForm() {
         <p className="text-muted text-sm leading-relaxed max-w-xs mx-auto">
           We'll reach out to{" "}
           <strong className="text-ink">{fields.email}</strong> as we move
-          forward. Thanks for believing in the idea.
+          forward. Thanks for being part of this project!
         </p>
       </div>
     );
