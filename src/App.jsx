@@ -73,9 +73,6 @@ function StepCard({ number, icon, title, body, delay = 0 }) {
   );
 }
 
-/* ═══════════════════════════════════════════════════════
-   MAIN APP
-═══════════════════════════════════════════════════════ */
 export default function App() {
   const waitlistRef = useRef(null);
   useScrollReveal();
@@ -177,27 +174,26 @@ export default function App() {
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT — spinning circle */}
           <div
-            className="hidden md:flex flex-col items-center gap-10 animate-fade-in delay-300"
+            className="hidden md:flex flex-col items-center justify-center animate-fade-in delay-300"
             style={{ opacity: 0 }}
           >
-            {/* <BookStack /> */}
-            {/* Spinning circle badge */}
-            <div className="relative" style={{ width: 140, height: 140 }}>
+            <div className="relative" style={{ width: 300, height: 300 }}>
+              {/* Spinning text ring */}
               <div className="absolute inset-0 animate-spin-slow">
-                <svg viewBox="0 0 140 140" className="w-full h-full">
+                <svg viewBox="0 0 300 300" className="w-full h-full">
                   <path
                     id="spin-circle"
                     fill="none"
-                    d="M 70,70 m -52,0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0"
+                    d="M 150,150 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0"
                   />
                   <text
                     style={{
                       fill: "#2D5016",
-                      fontSize: 11,
+                      fontSize: 13,
                       fontFamily: "'DM Sans', sans-serif",
-                      letterSpacing: 4,
+                      letterSpacing: 5,
                     }}
                   >
                     <textPath href="#spin-circle">
@@ -210,20 +206,20 @@ export default function App() {
               <div
                 className="absolute animate-pulse-ring"
                 style={{
-                  inset: "22%",
+                  inset: "18%",
                   borderRadius: "50%",
                   border: "1.5px solid #2D5016",
                 }}
               />
-              {/* Centre logo mark */}
+              {/* Centre circle with logo */}
               <div
                 className="absolute flex items-center justify-center rounded-full"
-                style={{ inset: "24%", background: "#2D5016" }}
+                style={{ inset: "20%", background: "#2D5016" }}
               >
                 <img
                   src="/logo-alexandria.svg"
                   alt="Alexandria"
-                  style={{ width: "85%", height: "85%", objectFit: "contain" }}
+                  style={{ width: "60%", height: "60%", objectFit: "contain" }}
                 />
               </div>
             </div>
@@ -347,7 +343,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right col — earning examples + borrower note */}
             <div className="flex flex-col gap-5">
               <EarningCalc />
               <div
@@ -421,7 +416,6 @@ export default function App() {
             />
           </div>
 
-          {/* Connector dots */}
           <div className="hidden md:flex items-center justify-center gap-2 mt-10 opacity-40">
             <div
               className="w-2 h-2 rounded-full"
@@ -522,7 +516,11 @@ export default function App() {
       <footer style={{ background: "#0F1A07", padding: "40px 24px 48px" }}>
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
           <div className="flex items-center gap-2.5">
-            <span className="text-xl">📖</span>
+            <img
+              src="/logo-alexandria.svg"
+              alt="Alexandria"
+              style={{ height: 28 }}
+            />
             <span
               className="font-serif text-xl font-bold"
               style={{ color: "#F5F0E8" }}
@@ -531,7 +529,7 @@ export default function App() {
             </span>
           </div>
           <p className="text-xs" style={{ color: "#5A5040" }}>
-            Made by{" "}
+            Made with love in Melbourne by{" "}
             <a
               href="https://wheredidfranciscogo.com"
               target="_blank"
