@@ -22,6 +22,16 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Netlify form detection -->
+    <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+      <input name="name" />
+      <input name="email" />
+      <input name="city" />
+      <input name="interest" />
+      <input name="bot-field" />
+    </form>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
