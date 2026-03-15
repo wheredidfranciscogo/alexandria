@@ -197,7 +197,8 @@ export default function App() {
                     }}
                   >
                     <textPath href="#spin-circle">
-                      YOUR NEIGHBOURHOOD'S BOOKSHELF · · ·
+                      YOUR NEIGHBOURHOOD'S BOOKSHELF · YOUR NEIGHBOURHOOD'S
+                      BOOKSHELF ·
                     </textPath>
                   </text>
                 </svg>
