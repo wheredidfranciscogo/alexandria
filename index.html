@@ -23,13 +23,15 @@
   <body>
     <div id="root"></div>
 
-    <!-- Netlify form detection -->
-    <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
-      <input name="name" />
-      <input name="email" />
-      <input name="city" />
-      <input name="interest" />
-      <input name="bot-field" />
+    <form name="waitlist" netlify hidden>
+      <input type="text" name="name" />
+      <input type="text" name="postcode" />
+      <input type="email" name="email" />
+      <input type="checkbox" name="lend" />
+      <input type="checkbox" name="borrow" />
+      <input type="checkbox" name="buy" />
+      <input type="checkbox" name="sell" />
+      <button type="submit">Submit</button>
     </form>
 
     <script type="module" src="/src/main.jsx"></script>
