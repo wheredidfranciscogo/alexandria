@@ -182,7 +182,7 @@ export default function App() {
             className="hidden md:flex flex-col items-center gap-10 animate-fade-in delay-300"
             style={{ opacity: 0 }}
           >
-            <BookStack />
+            {/* <BookStack /> */}
             {/* Spinning circle badge */}
             <div className="relative" style={{ width: 140, height: 140 }}>
               <div className="absolute inset-0 animate-spin-slow">
@@ -221,7 +221,7 @@ export default function App() {
                 style={{ inset: "24%", background: "#2D5016" }}
               >
                 <img
-                  src="/logo-alexandra.svg"
+                  src="/logo-alexandria.svg"
                   alt="Alexandria"
                   style={{ width: "65%", height: "65%", objectFit: "contain" }}
                 />
