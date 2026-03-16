@@ -531,7 +531,7 @@ export default function App() {
           <p className="text-xs" style={{ color: "#5A5040" }}>
             Made with love in Melbourne by{" "}
             <a
-              href="https://wheredidfranciscogo.com"
+              href="https://wheredidfranciscogo.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#6B8F71", textDecoration: "none" }}
