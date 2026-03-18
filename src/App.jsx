@@ -232,7 +232,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto grid grid-cols-3">
           {[
             { n: "5km", label: "Search radius" },
-            { n: "$0.99", label: "Per month to use" },
+            { n: "Free", label: "To join & explore" },
             { n: "Postcode", label: "Based search" },
           ].map((s, i) => (
             <div
