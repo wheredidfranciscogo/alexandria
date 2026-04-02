@@ -105,8 +105,7 @@ export default function App() {
             >
               Alexandria is a neighbourhood book platform. Swap, rent, or sell
               books with people nearby. No algorithms. No isolation. Just books
-              and the people who love them and all within 5km of you so stay
-              local.
+              and the people who love them + all within 5km of you.
             </p>
 
             <div
