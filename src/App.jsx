@@ -546,7 +546,7 @@ export default function App() {
             </span>
           </div>
           <p className="text-xs" style={{ color: "#5A5040" }}>
-            Made with love in Melbourne by{" "}
+            Made in Ocean Grove by{" "}
             <a
               href="https://wheredidfranciscogo.netlify.app/"
               target="_blank"
