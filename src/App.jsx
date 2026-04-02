@@ -1,56 +1,7 @@
 import { useRef } from "react";
 import Navbar from "./components/Navbar";
-import BookStack from "./components/BookStack";
 import WaitlistForm from "./components/WaitlistForm";
 import { useScrollReveal } from "./components/useScrollReveal";
-
-/* ── Earning calculator ── */
-function EarningCalc() {
-  return (
-    <div
-      className="rounded-xl p-7 reveal-right"
-      style={{ background: "#FAF7F1", border: "1px solid #DDD5C2" }}
-    >
-      <p
-        className="text-xs uppercase tracking-widest font-medium mb-5"
-        style={{ color: "#7A6E5F" }}
-      >
-        Quick example
-      </p>
-      {[
-        { book: "A $25 novel", price: "$2/month", months: 12, earn: "$24" },
-        { book: "A $40 textbook", price: "$4/month", months: 12, earn: "$48" },
-        { book: "A $18 paperback", price: "$1/month", months: 12, earn: "$12" },
-      ].map((r, i) => (
-        <div
-          key={i}
-          className="flex items-center justify-between py-3.5"
-          style={{ borderBottom: i < 2 ? "1px solid #E8E0D0" : "none" }}
-        >
-          <div>
-            <div className="text-sm font-medium text-ink">{r.book}</div>
-            <div className="text-xs mt-0.5" style={{ color: "#7A6E5F" }}>
-              rented at {r.price} × {r.months} months
-            </div>
-          </div>
-          <div
-            className="font-serif font-bold text-xl"
-            style={{ color: "#2D5016" }}
-          >
-            {r.earn}
-          </div>
-        </div>
-      ))}
-      <div
-        className="mt-4 rounded-lg px-4 py-3 text-xs leading-relaxed"
-        style={{ background: "rgba(45,80,22,0.07)", color: "#2D5016" }}
-      >
-        📌 Books that have been sitting on your shelf for years — earning
-        nothing.
-      </div>
-    </div>
-  );
-}
 
 /* ── Step card ── */
 function StepCard({ number, icon, title, body, delay = 0 }) {
@@ -124,7 +75,6 @@ export default function App() {
         />
 
         <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
-          {/* LEFT */}
           <div>
             <div className="badge animate-fade-in mb-6" style={{ opacity: 0 }}>
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
@@ -134,23 +84,29 @@ export default function App() {
             <h1
               className="font-serif font-black leading-none mb-7 animate-fade-up"
               style={{
-                fontSize: "clamp(40px, 5.5vw, 70px)",
+                fontSize: "clamp(38px, 5vw, 68px)",
                 letterSpacing: "-0.03em",
                 opacity: 0,
+                lineHeight: 1.05,
               }}
             >
-              Your neighbourhood's
+              The book is
               <br />
-              <em className="text-forest">bookshelf.</em>
+              the excuse.
+              <br />
+              <em className="text-forest">The community</em>
+              <br />
+              <em className="text-forest">is the point.</em>
             </h1>
 
             <p
               className="text-lg leading-relaxed mb-10 animate-fade-up delay-200"
               style={{ color: "#7A6E5F", maxWidth: 460, opacity: 0 }}
             >
-              Alexandria is a peer-to-peer book rental marketplace. List your
-              books, earn from them, or rent from someone a few streets away —
-              searched by postcode, within 5km. Keeping it local and protected.
+              Alexandria is a neighbourhood book platform. Swap, rent, or sell
+              books with people nearby. No algorithms. No isolation. Just books
+              and the people who love them and all within 5km of you so stay
+              local.
             </p>
 
             <div
@@ -180,7 +136,6 @@ export default function App() {
             style={{ opacity: 0 }}
           >
             <div className="relative" style={{ width: 300, height: 300 }}>
-              {/* Spinning text ring */}
               <div className="absolute inset-0 animate-spin-slow">
                 <svg viewBox="0 0 300 300" className="w-full h-full">
                   <path
@@ -197,12 +152,12 @@ export default function App() {
                     }}
                   >
                     <textPath href="#spin-circle">
-                      · YOUR NEIGHBOURHOOD'S BOOKSHELF · JOIN US ·
+                      · SWAP · RENT · SELL · CONNECT · READ · SWAP · RENT · SELL
+                      · READ
                     </textPath>
                   </text>
                 </svg>
               </div>
-              {/* Pulse ring */}
               <div
                 className="absolute animate-pulse-ring"
                 style={{
@@ -211,7 +166,6 @@ export default function App() {
                   border: "1.5px solid #2D5016",
                 }}
               />
-              {/* Centre circle with logo */}
               <div
                 className="absolute flex items-center justify-center rounded-full"
                 style={{ inset: "20%", background: "#ffffff" }}
@@ -231,9 +185,9 @@ export default function App() {
       <section className="py-12 px-6" style={{ background: "#2D5016" }}>
         <div className="max-w-4xl mx-auto grid grid-cols-3">
           {[
-            { n: "5km", label: "Search radius" },
+            { n: "5km", label: "From your door" },
+            { n: "Swap", label: "Trade what you love" },
             { n: "Free", label: "To join & explore" },
-            { n: "Postcode", label: "Based search" },
           ].map((s, i) => (
             <div
               key={i}
@@ -285,52 +239,54 @@ export default function App() {
                   lineHeight: 1.15,
                 }}
               >
-                A library built
+                Most apps move people
                 <br />
-                <em className="text-terra">by your community.</em>
+                <em className="text-terra">further apart.</em>
               </h2>
               <p
                 className="text-base leading-loose mb-5"
                 style={{ color: "#7A6E5F" }}
               >
-                There are hundreds of books sitting idle in houses just like
-                yours. Read once, shelved, forgotten. No one else has access to
-                them — maybe a close friend you talk books with, but that's it.
+                People are stressed, stretched, and more isolated than ever.
+                They live in communities where they don't know their neighbours
+                and technology has made that worse.
               </p>
               <p
                 className="text-base leading-loose mb-5"
                 style={{ color: "#7A6E5F" }}
               >
-                What if those books could be part of something bigger? What if
-                your shelf — and your neighbour's, and the person three streets
-                over — could become a living community library? One that's built
-                and sustained by people locally, supported by our platform.
+                Alexandria is built to do the opposite. It uses a simple, human
+                object, a book, as a reason for two people nearby to connect.
+                You have something I want. I have something you might love.
+                Let's meet.
               </p>
               <p
                 className="text-base leading-loose mb-8"
                 style={{ color: "#7A6E5F" }}
               >
-                That's Alexandria. A place to share the books you love, discover
-                new ones, and earn something from making your shelf available to
-                the community around you.
+                Every swap, every rental, every sale means two people have to
+                meet. They stand at a doorstep, or a café, or a park bench. They
+                hand something over. Sometimes they talk. Sometimes that's the
+                beginning of something — a friendship, a reading group, a
+                community.
               </p>
               <div className="flex flex-col gap-4">
                 {[
                   {
-                    icon: "📍",
-                    text: "Search by postcode — find books within 5km of you.",
+                    icon: "🔄",
+                    text: "Swap a book you've read for one you haven't — nobody loses anything.",
                   },
                   {
-                    icon: "💳",
-                    text: "Borrowers pre-authorise a deposit. If a book is lost or damaged, the lender is protected automatically.",
+                    icon: "📍",
+                    text: "Search by postcode — find books and readers within 5km of you.",
                   },
                   {
                     icon: "📖",
-                    text: "List a book to rent, sell, or both. You decide.",
+                    text: "List a book to swap, rent, sell, or all three. You decide.",
                   },
                   {
-                    icon: "💸",
-                    text: "Payments go directly to the lender's account.",
+                    icon: "🤝",
+                    text: "Meet locally. Hand it over in person. Keep it human.",
                   },
                 ].map((f, i) => (
                   <div key={i} className="flex items-start gap-3.5">
@@ -344,24 +300,85 @@ export default function App() {
             </div>
 
             <div className="flex flex-col gap-5">
-              <EarningCalc />
+              {/* Swap card */}
+              <div
+                className="reveal-right rounded-xl p-7"
+                style={{ background: "#FAF7F1", border: "1px solid #DDD5C2" }}
+              >
+                <p
+                  className="text-xs uppercase tracking-widest font-medium mb-5"
+                  style={{ color: "#7A6E5F" }}
+                >
+                  Why swap changes everything
+                </p>
+                {[
+                  {
+                    label: "No money changes hands",
+                    sub: "Lower barrier than renting or buying",
+                  },
+                  {
+                    label: "Both people win",
+                    sub: "Nobody feels like a transaction",
+                  },
+                  {
+                    label: "A reason to meet",
+                    sub: "The exchange happens in person",
+                  },
+                ].map((r, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-4 py-3.5"
+                    style={{
+                      borderBottom: i < 2 ? "1px solid #E8E0D0" : "none",
+                    }}
+                  >
+                    <div
+                      className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+                      style={{ background: "#2D5016" }}
+                    />
+                    <div>
+                      <div className="text-sm font-medium text-ink">
+                        {r.label}
+                      </div>
+                      <div
+                        className="text-xs mt-0.5"
+                        style={{ color: "#7A6E5F" }}
+                      >
+                        {r.sub}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                <div
+                  className="mt-5 rounded-lg px-4 py-3 text-xs leading-relaxed"
+                  style={{
+                    background: "rgba(45,80,22,0.07)",
+                    color: "#2D5016",
+                  }}
+                >
+                  🔄 Renting and selling already exist online. What's missing is
+                  the frictionless local human exchange.
+                </div>
+              </div>
+
+              {/* Identity card */}
               <div
                 className="reveal rounded-xl p-6 flex items-start gap-4"
                 style={{ background: "#EDE7D9", border: "1px solid #CCC0A8" }}
               >
-                <span className="text-2xl mt-0.5">📥</span>
+                <span className="text-2xl mt-0.5">📚</span>
                 <div>
                   <div className="font-semibold text-sm mb-1.5 text-ink">
-                    For borrowers
+                    Your shelf is your identity
                   </div>
                   <p
                     className="text-xs leading-relaxed"
                     style={{ color: "#7A6E5F" }}
                   >
-                    Access books in your neighbourhood for a fraction of the
-                    purchase price. Pay a small rental fee. Leave a deposit
-                    that's fully returned when the book comes back in good
-                    shape. Read more. Spend less.
+                    The books you've read say more about you than any bio.
+                    Alexandria makes your shelf visible to people nearby who
+                    think the same way you do. The connection and community
+                    starts with a book.
                   </p>
                 </div>
               </div>
@@ -396,22 +413,22 @@ export default function App() {
             <StepCard
               number="01"
               icon="📚"
-              title="List your book"
-              body="Add a book from your shelf. Scan the barcode and we fill in the details automatically. Set your rental price, the replacement value, and whether it's available to rent, buy, or both."
+              title="List your shelf"
+              body="Add books you're happy to share. Scan the barcode and we fill in the details automatically. Choose how you want to share — swap, rent, sell, or all three."
               delay={0}
             />
             <StepCard
               number="02"
               icon="📍"
               title="Someone nearby finds it"
-              body="Borrowers search by postcode. Your book shows up within 5km of them. They see the condition, price, and your lender rating — then request to rent."
+              body="People search by postcode. Your books show up within 5km. They browse your shelf, find something they want, and send you a message. Simple as that."
               delay={0.12}
             />
             <StepCard
               number="03"
-              icon="💰"
-              title="You earn. They read."
-              body="The borrower's deposit is held for protection. Rental payment goes straight to your account. Book comes back, deposit releases. Everybody wins."
+              icon="🤝"
+              title="Meet. Exchange. Connect."
+              body="Agree on the swap, rental, or sale. Meet locally to hand it over. For rentals, a deposit is held for protection and released on return. Everyone wins."
               delay={0.24}
             />
           </div>
