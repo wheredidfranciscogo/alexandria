@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Alexandria — a peer-to-peer book rental marketplace. Earn from your shelf. Borrow from neighbours within 5km."
+      content="Alexandria — a neighbourhood book experiment in Ocean Grove. We tested whether locals would swap, lend, and share books with each other. Here's what we found."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,17 +27,16 @@
       gtag("js", new Date());
       gtag("config", "G-9HK0CJZVED");
     </script>
-    <title>Alexandria — Your Neighbourhood Library</title>
+    <title>Alexandria — A Neighbourhood Book Experiment</title>
   </head>
   <body>
     <div id="root"></div>
 
     <!-- Netlify form detection -->
-    <form name="waitlist" netlify hidden>
+    <form name="contact" netlify hidden>
       <input type="text" name="name" />
-      <input type="text" name="postcode" />
       <input type="email" name="email" />
-      <input type="text" name="interest" />
+      <textarea name="message"></textarea>
     </form>
 
     <script type="module" src="/src/main.jsx"></script>
