@@ -1,52 +1,27 @@
 import { useState } from "react";
 
 export default function WaitlistForm() {
-  const [fields, setFields] = useState({
-    name: "",
-    email: "",
-    postcode: "",
-    interest: { lend: false, borrow: false, buy: false, sell: false },
-  });
+  const [fields, setFields] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
 
-  const update = (k) => (e) =>
-    setFields((f) => ({ ...f, [k]: e.target.value }));
-  const toggleInterest = (k) =>
-    setFields((f) => ({
-      ...f,
-      interest: { ...f.interest, [k]: !f.interest[k] },
-    }));
+  const update = (k) => (e) => setFields((f) => ({ ...f, [k]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-
     try {
-      const interestString =
-        Object.entries(fields.interest)
-          .filter(([, v]) => v)
-          .map(([k]) => k)
-          .join(", ") || "none";
-
       const body = new URLSearchParams({
-        "form-name": "waitlist",
+        "form-name": "contact",
         name: fields.name,
         email: fields.email,
-        postcode: fields.postcode,
-        interest: interestString,
+        message: fields.message,
       });
-
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
       });
-
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
+      setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");
     }
@@ -55,14 +30,14 @@ export default function WaitlistForm() {
   if (status === "success") {
     return (
       <div className="animate-slide-down text-center py-10">
-        <div className="text-5xl mb-5">🎉</div>
+        <div className="text-5xl mb-5">📬</div>
         <h3 className="font-serif text-2xl font-bold text-forest mb-3">
-          You're registered!
+          Message received!
         </h3>
         <p className="text-muted text-sm leading-relaxed max-w-xs mx-auto">
-          We'll reach out to{" "}
-          <strong className="text-ink">{fields.email}</strong> as we move
-          forward. Thanks for being part of this project!
+          We'll get back to{" "}
+          <strong className="text-ink">{fields.email}</strong> soon. Thanks for
+          your interest in Alexandria.
         </p>
       </div>
     );
@@ -83,109 +58,33 @@ export default function WaitlistForm() {
           />
         </div>
         <div>
-          <label className="form-label">Postcode</label>
+          <label className="form-label">Email *</label>
           <input
             className="form-input"
-            type="text"
-            placeholder="3226"
-            value={fields.postcode}
-            onChange={update("postcode")}
+            type="email"
+            placeholder="you@example.com"
+            value={fields.email}
+            onChange={update("email")}
+            required
           />
         </div>
       </div>
 
       <div>
-        <label className="form-label">Email Address *</label>
-        <input
-          className="form-input"
-          type="email"
-          placeholder="emma@example.com"
-          value={fields.email}
-          onChange={update("email")}
-          required
-        />
-      </div>
-
-      <div>
         <label className="form-label">
-          I want to…{" "}
-          <span
-            style={{
-              color: "#9E937F",
-              fontWeight: 400,
-              textTransform: "none",
-              letterSpacing: 0,
-            }}
-          >
-            (select all that apply)
+          Message{" "}
+          <span style={{ color: "#9E937F", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
+            (optional)
           </span>
         </label>
-        <div className="grid grid-cols-2 gap-2 mt-1">
-          {[
-            { key: "lend", label: "Lend", icon: "📤" },
-            { key: "borrow", label: "Borrow", icon: "📥" },
-            { key: "buy", label: "Buy", icon: "🛒" },
-            { key: "sell", label: "Sell", icon: "💰" },
-          ].map((opt) => {
-            const checked = fields.interest[opt.key];
-            return (
-              <button
-                key={opt.key}
-                type="button"
-                onClick={() => toggleInterest(opt.key)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  background: checked ? "rgba(45,80,22,0.07)" : "#FAF7F2",
-                  border: `1.5px solid ${checked ? "#2D5016" : "#C9BFA8"}`,
-                  borderRadius: 6,
-                  padding: "11px 14px",
-                  cursor: "pointer",
-                  transition: "all 0.15s ease",
-                  textAlign: "left",
-                  width: "100%",
-                }}
-              >
-                <span
-                  style={{
-                    width: 18,
-                    height: 18,
-                    borderRadius: 4,
-                    flexShrink: 0,
-                    border: `2px solid ${checked ? "#2D5016" : "#C9BFA8"}`,
-                    background: checked ? "#2D5016" : "transparent",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "all 0.15s ease",
-                  }}
-                >
-                  {checked && (
-                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                      <path
-                        d="M1 3.5L3.5 6L8 1"
-                        stroke="white"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </span>
-                <span
-                  style={{
-                    fontSize: 14,
-                    color: checked ? "#1C1810" : "#7A6E5F",
-                    fontWeight: checked ? 500 : 400,
-                  }}
-                >
-                  {opt.icon} {opt.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        <textarea
+          className="form-input"
+          placeholder="Tell us why you're interested, or ask us anything about the project."
+          value={fields.message}
+          onChange={update("message")}
+          rows={4}
+          style={{ resize: "vertical" }}
+        />
       </div>
 
       {status === "error" && (
@@ -213,10 +112,10 @@ export default function WaitlistForm() {
                 display: "inline-block",
               }}
             />
-            Claiming your spot…
+            Sending…
           </span>
         ) : (
-          "Yes, I'm Interested →"
+          "Send Message →"
         )}
       </button>
 

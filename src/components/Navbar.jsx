@@ -11,9 +11,9 @@ export default function Navbar({ onJoinClick }) {
   }, []);
 
   const links = [
-    { label: "The idea", href: "#concept" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Who it's for", href: "#waitlist" },
+    { label: "The project", href: "#concept" },
+    { label: "Results", href: "#results" },
+    { label: "Voices", href: "#voices" },
   ];
 
   return (
@@ -60,7 +60,7 @@ export default function Navbar({ onJoinClick }) {
             style={{ padding: "9px 22px", fontSize: 14 }}
             onClick={onJoinClick}
           >
-            Join Waitlist
+            Get Involved
           </button>
 
           {/* Hamburger */}
@@ -110,7 +110,7 @@ export default function Navbar({ onJoinClick }) {
                 setMenuOpen(false);
               }}
             >
-              Join Waitlist
+              Get Involved
             </button>
           </div>
         </div>
